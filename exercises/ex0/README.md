@@ -1,26 +1,32 @@
-# Level 1 Heading
+# Overview
 
-In this exercise, you will...
+In this exercise, you will get the overview of scenario that we are going to build in this workshop and the familiarise with systems and login process.
 
-## Level 2 Heading
+## Scenario
+Provide brief overview of the scenario.
 
-After completing these steps you will have....
+## Application overview
+The application comprises of three major parts:
+- Backend service that persist store the data and implement backend logic. It exposes the functionality via REST API. This is done in the AppGyver Cloud Mesh (TODO - CLoud Mesh - name under review).
+- Frontend to create the user interface (web application) using the service interfaces created in the previous step. This is done using AppGyver Composer.
+- Integrating the web-app created in the previous step to SAP Sales and Service Cloud.
 
-1.	Click here.
-<br>![](/exercises/ex0/images/00_00_0010.png)
+## Systems - User Selection & Login
 
-2.	Insert this code.
-``` abap
- DATA(params) = request->get_form_fields(  ).
- READ TABLE params REFERENCE INTO DATA(param) WITH KEY name = 'cmd'.
-  IF sy-subrc <> 0.
-    response->set_status( i_code = 400
-                     i_reason = 'Bad request').
-    RETURN.
-  ENDIF.
-```
+In this step you will familiarise yourself with the systems that will be used in the workshop.
+
+1.	AppGyver system and user.
+  - Please select one of the user (TODO: define a way to reserve users) 
+  - Login to the following user using the above user
+    <br>https://testgyver-qa-platform.testgyver.com/auth/legacy<br>
+ 
+2.	SAP Sales & Service (C4C) system and user
+  - Note that we will need C4C system only to access the data via API. The UI intercation steps would be performed by the instructor.
+  - System: https://my356925.crm.ondemand.com/
+  - User/password: DISPLAY / Readme 
 
 ## Summary
 
-Now that you have ... 
-Continue to - [Exercise 1 - Exercise 1 Description](../ex1/README.md)
+Now that you have familiarized ourself with the scenario and systems involved, let proceed with the actual execises.
+ 
+Continue to - [Exercise 1 - Creating REST services with AppGyver backedn builder](../ex1/README.md)
