@@ -44,12 +44,15 @@ Now before proceeding to implement UI, we need a way to fetch and create data us
   <br>![](/exercises/ex2/images/02_22_06_CreateDSSchema.png) 
 
 2. Move to 'CREATE RECORD' (for Warraty Subscription Data Source) and set the method 'Enabled' and set the schema to 'Use Get Schema'.
+  <br>![](/exercises/ex2/images/02_22_06a_CreateDSPost.png) 
 
 3. Create 'Registered Products' and 'Warranties' data sources in the same way.        
   However for these data sources:
   - We don't need CREATE RECORD to be enabled. 
-  - Also AccountID parameter to registered products data source
+  - Also add AccountID parameter to registered products data source.
+  - Don't forget to run the test for the collection and set schema from response.
   - Finally there Data Sources tab will look as following:
+  - Save the project - it is good practice ro save the project time to time.
   <br>![](/exercises/ex2/images/02_22_09_DataSourceSummary.png) 
   
 ## Exercise 2.3 Implement Warrant Subscription List Page
@@ -75,6 +78,10 @@ Now before proceeding to implement UI, we need a way to fetch and create data us
   <br>![](/exercises/ex2/images/02_23_06_SetHeaderCells.png) 
 
 5. Configure data row:
+  - Note that our AppGyver application will be finally hosted inside a C4C screen. It will take a paramneter `AccountID` from the host screen and filter the wareranty subscriptions and registered products based on that. So, we need to define a page parameter `AccoundID` and also a App variable to store this `AccoundID` which is shared across the screens.
+ <br>![](/exercises/ex2/images/02_23_06a_AddPageParameter.png) 
+ <br>![](/exercises/ex2/images/02_23_06b_AddAppVariable.png) 
+   
   - Earlier we created data sources to read data from the backend. Now we need to created a data-variable to actually read and include the data in this page.
   <br>![](/exercises/ex2/images/02_23_07_AddDataVariables.png)  
   
@@ -95,15 +102,102 @@ Now before proceeding to implement UI, we need a way to fetch and create data us
   <br>![](/exercises/ex2/images/02_23_17_ConfigureCellTitle.png)  
   <br>![](/exercises/ex2/images/02_23_18_ConfigureCellTitle.png) 
 
-- Launch the application to test Warranty Subscription list screen
+6. Assign App variable `AccoundID`. We have created the app variable. Note that earlier we have created the App variable but we have not assigned it a value yet. Let assign it.
+  - Open the 'Logic' panel if this is not opened already
+  <br>![](/exercises/ex2/images/02_23_18a_AssignAppVariable.png) 
+
+  - Set the AccountID app variable to the AccountID page parameter
+  <br>![](/exercises/ex2/images/02_23_18b_AssignAppVariable.png) 
+
+7. Launch the application to test Warranty Subscription list screen
   Save the application and test in the Preview portal:
   <br>![](/exercises/ex2/images/02_23_19_Launch.png) 
   <br>![](/exercises/ex2/images/02_23_20_Launch.png) 
 
 ## Exercise 2.4 Implement Warrant Subscription Creation Page
+In this section we will create a page using which a warranty subscription can be created. This will be launched from first page using '+' button.
 
+1. Create New Page and name it 'Create Warranty Subscription'
+  <br>![](/exercises/ex2/images/02_24_01_CreateNewPage.png) 
+  <br>![](/exercises/ex2/images/02_24_02_CreateNewPage.png)  
+
+2. Create Required Controls on the Page:
+  - Set the Title as 'Warranty Subscription Creation' 
+  - Create two dropdowns to select 'Registered Product' and 'Warranty Terms'
+  <br>![](/exercises/ex2/images/02_24_03_CreateLayout.png)  
+
+3. Create Save and Cancel buttons
+  - First create a container to hold and align the buttons
+  <br>![](/exercises/ex2/images/02_24_04_CreateActionContainer.png)  
+
+  - First create a container to hold and align the buttons
+  <br>![](/exercises/ex2/images/02_24_05_CreateButtons.png) 
+
+4. Switch to VARIABLES and add data variables to fetch registered products using the respective data siource. Set the `AccountID` parameter to the formula: `"'" + appVars.AccountID + "'"`. (TODO: move adding '' to backend) 
+  <br>![](/exercises/ex2/images/02_24_06_AddDataVariables.png) 
+  <br>![](/exercises/ex2/images/02_24_06a_AddDataVariables.png) 
+  <br>![](/exercises/ex2/images/02_24_06b_AddDataVariables.png) 
+  <br>![](/exercises/ex2/images/02_24_06c_AddDataVariables.png) 
+
+5. Similarly add a data variable for 'warranties' data source. Note that there is no parameter defined for the warranties data source.
+
+6. Add some 'page' variables to hold the selected data by the user:
+  - selectedDate : type `date text`
+  - selectedProduct: type `text`
+  - selectedWarranty: type `text`
+  <br>![](/exercises/ex2/images/02_24_06_AddDataVariables.png) 
+
+4. Set 'Option list' for the registered products
+  - Click on the 'Option list' and set the formula value to:
+  `MAP(data.RegisteredProducts1, {label: item.RegisteredProductID, value:item.RegisteredProductID})`.
+  In this formula, we are transforming the data retrive from the backend to the format that Option list needs.
+  <br>![](/exercises/ex2/images/02_24_08_SetOptionList.png) 
+  <br>![](/exercises/ex2/images/02_24_09_SetOptionList.png) 
+  <br>![](/exercises/ex2/images/02_24_10_SetOptionList.png) 
+
+5. Set the 'Selected value' to the page varibale `selectedProduct` that we have created earlier. Bu doing this we will get the registered product selected by the user via thsi drop-down.
+  <br>![](/exercises/ex2/images/02_24_11_SetSelectedValue.png)  
+
+6. Similarly configure the 'Warranty Terms' drop down:
+  - Option list: Set the value to formula: `MAP(data.Warranties1, {label:item.CoverageTerm,value:item.id})` 
+  - Selected value: To page variable: `selectedWarranty`
+  <br>![](/exercises/ex2/images/02_24_12_ConfigureWarrantyDropDown.png)
+
+7. Configure End Date
+  - Bind value to page variable: `selectedDate`
+  - Set the place holder text to 'YYYY-MM-DD'
+  <br>![](/exercises/ex2/images/02_24_13_ConfigureEndDate.png) 
+
+8. Configure Save logic
+  - Select the 'Save' button and click on the 'Show Logic for Button1'
+  <br>![](/exercises/ex2/images/02_24_14_SaveLogic.png) 
+
+  - Drag-n-drop 'Crete Record' from the left panel and configure as below:
+  <br>![](/exercises/ex2/images/02_24_15_SaveLogic.png) 
+  <br>![](/exercises/ex2/images/02_24_16_SaveLogic.png) 
+
+  - Set navigation back to the 'Warranty Sybscription' list page
+  <br>![](/exercises/ex2/images/02_24_17_NavigateToList.png) 
+
+9. Also configure Cancle logic to navigate back to the list page.
+
+10. Save and launch the application in preview portal
+  <br>![](/exercises/ex2/images/02_24_18_SaveAndLaunch.png) 
+  <br>![](/exercises/ex2/images/02_24_19_SaveAndLaunch.png) 
+
+11. Get the distributable URL
+  Till now we have tested inside preview portal. Now we get the final URL by deploying it.
+  <br>![](/exercises/ex2/images/02_24_20_GetURL.png) 
+  <br>![](/exercises/ex2/images/02_24_20_GetURL.png) 
+  
+  - In the below step you will give the unique name that will make the final url. 
+  <br>![](/exercises/ex2/images/02_24_20_GetURL.png)     
+  
 ## Summary
 
-You've now ...
+You've now implemented the UI appliction and got the final url that will be used to mashup the application inside C4C.
+
+The application url will look like this:
+`http://<unique name>-ex.wsapps.testgyver.com/?AccountID=1000000`. It accepets one query parameter called `AccountID`.
 
 Continue to - [Exercise 3 - Excercise 3 ](../ex3/README.md)
