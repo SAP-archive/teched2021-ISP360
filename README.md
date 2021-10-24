@@ -26,6 +26,7 @@ The requirements to follow the exercises in this repository are:
     - [Exercise 2.1 Create Frontend(UI) Project](exercises/ex2#exercise-21-create-frontend-project)
     - [Exercise 2.2 Create Data Sources](exercises/ex2#exercise-22-create-data-sources)
    - [Exercise 2.3 Implement Warrant Subscription List Page](exercises/ex2#exercise-23-implement-warrant-subscription-list-page)
+   - [Exercise 2.4 Implement Warrant Subscription Creation Page](exercises/ex2#exercise-24-implement-warrant-subscription-creation-page)
 - [Exercise 3 - Emebedding the Web Application in C4C ](exercises/ex2/)
     - [Exercise 2.1 - Exercise 2 Sub Exercise 1 Description](exercises/ex2#exercise-21-sub-exercise-1-description)
     - [Exercise 2.2 - Exercise 2 Sub Exercise 2 Description](exercises/ex2#exercise-22-sub-exercise-2-description)
