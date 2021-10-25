@@ -190,9 +190,12 @@ In this section we will create a page using which a warranty subscription can be
   <br>![](/exercises/ex2/images/02_24_20_GetURL.png) 
   <br>![](/exercises/ex2/images/02_24_20_GetURL.png) 
   
-  - In the below step you will give the unique name that will make the final url. 
-  <br>![](/exercises/ex2/images/02_24_20_GetURL.png)     
-  
+  - In the below step you will give the unique name that will make the final url. Copy the while url (given name + domain) that will be final url for the app once you have performed the next (BUILD) step. Continue with the 'Save & Next' with all the default values till the dialog closes.
+  <br>![](/exercises/ex2/images/02_24_20_GetURL.png)  
+
+  - Click on the build step, selected a runtime version (preferably latest one) and provide the version number in the requested format. The build may take soemtime to complete. Please wait till it says `Status: Delivered`  before running the url.
+  <br>![](/exercises/ex2/images/02_24_23_GetURL.png)     
+  <br>![](/exercises/ex2/images/02_24_24_GetURL.png)    
 ## Summary
 
 You've now implemented the UI appliction and got the final url that will be used to mashup the application inside C4C.
