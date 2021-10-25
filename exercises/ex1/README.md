@@ -44,7 +44,7 @@ After completing these steps you will have a table to store warranties.
 2.	Configure Warranty Subscription table
   Once the table is created an “id” field is automatically added, which will be the primary key to our database table and is a required property while creating the data. When we are creating any instances in database the appgyver automatically generated value for this ID field and stores the data. We can change the property of the id field; the default will be as text type.
 
-  Add an additional table field, named 'CoverageTerms' as below:
+  Add an additional table field, named 'CoverageTerm' as below:
 
   <br>![](/exercises/ex1/images/01_12_02_CreateDataField.png)
 
@@ -196,10 +196,17 @@ This end point will provide list of records from Warranty table.
   <br>![](/exercises/ex1/images/01_14_05_SetQueryParam.png)
   <br>![](/exercises/ex1/images/01_14_06_SetQueryParam2.png)
 
-  3. Set Data Source implementation flow
+  3. Configure table schema with following properties:
+    - IsActive (type: True/false) 
+    - Product (type: Text) 
+    - AccountID (type: Text) 
+    - WarrantyEnd (type: Date text - ISO 8601 ) 
+    - WarrantyID (type: Text) 
+  
+  4. Set Data Source implementation flow
   <br>![](/exercises/ex1/images/01_14_07_SetDSFlow.png) 
 
-  4. Configure List Subscriptions:
+  5. Configure List Subscriptions:
   Double click on the 'List Subscriptions' block and configure as following:
   - Set the table as `WarrantySubscription`
   - Set filter condition
@@ -219,8 +226,8 @@ This end point will provide list of records from Warranty table.
   <br>![](/exercises/ex1/images/01_14_17_SetJSBlock.png)
   
     - Configure two input variables
-      - Warranties (List of Warraties / List of records)
-      - Subscriptions (List of Subscriptions / List of records)
+      - `warranties` (List of Warraties / List of records)
+      - `subscriptions` (List of Subscriptions / List of records)
     - Copy below JS snippet to JavaScript block:
     ```javascript
       let subscriptions = inputs.subscriptions;
