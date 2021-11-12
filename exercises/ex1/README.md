@@ -1,291 +1,326 @@
-# Exercise 1 - Creating REST services with AppGyver backedn builder
+# Exercise 1 - Creating REST services with SAP AppGyver Cloud Integrations builder
 
-In this exercise we will build back-end services in the AppGyver. We will build three services:
-- To store and read the warranty information.
-- To read registered products data from C4C.
-- To create and read warranty subscription information for given account and registered product.
- 
-After completion of this exercise, you would be familiar with 
-- Create backend project.
-- Creating database table.
-- Perform CRUD operations on them usin REST API.
+In this exercise we will build backend services with the **SAP AppGyver**. We will build three services:
+
+- To store and read the warranty information
+- To read registered products data from C4C
+- To create and read warranty subscription information for given C4C account and registered product
+
+After completion of this exercise, you would be familiar with
+
+- Create backend project
+- Creating database tables
+- Perform CRUD operations on them using REST API
 - Consuming external REST endpoints (like C4C OData API)
-- Deploying the service.
+- Deploying and testing the service
 
-## Exercise 1.1 Creating backend project
-First you need to create a project to start implementiing the functionality.
+## Exercise 1.1 Opening a backend project
 
-After completing these steps you will have backend project ready to implement a REST service
+First you will need to go to **Cloud Integrations** builder from main **SAP AppGyver** view. We have pre-created and deployed an empty project for you so we'll get a running start for the workshop. You can create a new project yourself after the workshop steps.
 
-1. Login to backend 
-  - TODO - link to the final systems
-  - Enter alloted credentials
+1. Login to backend if you haven't already
+  - https://platform.testgyver.com/auth/legacy
+  - Enter credentials from the *Getting Started* step
 
-1. Click here.
-  <br>![](/exercises/ex1/images/01_11_01_createBackend.png)
+2. Click *Cloud Integrations* button
+  <br>![](/exercises/ex1/images/01_11_01_Backends.png)
 
-2.	Once backend is created, provide a unique name and change the basic configuration. 
-  - Name: Name is name of the backend service/application. **Please prefix the project name with the userid to make it unique**.
-  - Hostname: This will be part of the API url path. Again please append userid with your host name like (USER-Id)-productwarranty. Note: the maximum length of this field is 20 character.
-  <br>![](/exercises/ex1/images/01_11_02_projectBasicConfig.png)
+3. Open existing *Cloud Integration* project
+  <br>![](/exercises/ex1/images/01_11_02_OpenBackend.png)
 
-  Once these base configurations are done, we will proceed with creating database tables required for our back-end services.
+4. Once Backend is open you will see some basic information
+  - Name: Name is name of the backend service/application
+  - Hostname: This will be part of the API URL. Changing hostname will require removing existing deployment and deploying again so you should not change this during the workshop to avoid unnecessary wait time
+  <br>![](/exercises/ex1/images/01_11_03_Config.png)
+
+Now we will proceed with creating database tables required for our backend services.
 
 ## Exercise 1.2 Implement Warranty REST API
+
 ### Exercise 1.2.1 Create database table to store Warranties
+
 Since we are creating an application which would show the subscribed warranties, first we need a table to store warranty details like warranty terms.
 
 After completing these steps you will have a table to store warranties.
 
-1.	To created backend tables navigate to Data Tables options, Click on ADD NEW. Provide a name to the table as 'Warranty'.
+1. To create backend tables navigate to Data Tables options, Click on ADD NEW button. Provide a name to the table as `Warranties`
 
   <br>![](/exercises/ex1/images/01_12_01_CreateDataTable.png)
 
-2.	Configure Warranty Subscription table
-  Once the table is created an “id” field is automatically added, which will be the primary key to our database table and is a required property while creating the data. When we are creating any instances in database the appgyver automatically generated value for this ID field and stores the data. We can change the property of the id field; the default will be as text type.
+2. Configure Warranties table
 
-  Add an additional table field, named 'CoverageTerm' as below:
+  Once the table is created an `id` field is automatically added. This is the primary key to our database table and is a required property for creating new records. When we are creating new records to database then **SAP AppGyver** will automatically generate value for this id field.
+
+  Add an additional table field, named `CoverageTerm` (1) as below and click plus icon (2):
 
   <br>![](/exercises/ex1/images/01_12_02_CreateDataField.png)
 
-  Please configure the field properties as below:
-  <br>![](/exercises/ex1/images/01_12_03_ConfigureDataField.png)
+3. New field type is *Text* and it is required by default. Keep these values and click SAVE button (1) at top right corner as shown below:
 
-### Exercise 1.2.2 Create a Data Source and API for getting warranty collection
+  <br>![](/exercises/ex1/images/01_12_03_Save.png)
 
-In the above section we have already created the database tables (Warranty), now here we will create data resources to fetch the data from the table.
+4. Scroll back up and click DATA BROWSER button
 
-1. Navigate to Data Resources option and create one, provide the name “Warranties”, this is to get the available warranties .
-  <br>![](/exercises/ex1/images/01_12_04_CreateDataSource.png)
+  <br>![](/exercises/ex1/images/01_12_04_DataBrowser.png)
 
-3. Implement Get Collection
-This end point will provide list of records from Warranty table.
-  - Click on Get Collection
-  - In the logic editor, drag & drop the "List Records" flow from the toolbar
-  - Delete the JS Block that was created by default
-  - Connect the output of the Request Received block to the List Records as in the belew diagrams
-  - Connect the output of the List Records block to the Send Successful Response block as in the below diagram
-  <br>![](/exercises/ex1/images/01_12_06_GetDSCollection.png)
- 
-4. Make sure the output of the response is set to the output of List Records.
-  <br>![](/exercises/ex1/images/01_12_07_SetResponseList.png)
+  - Then create some warranties with coverage terms of your choosing. First time creation will take a while so wait for the blue Success message before creating another Warranty record:
 
-  Then select the List of Records as below:
-  <br>![](/exercises/ex1/images/01_12_07a_SetResponseList.png)
+  <br>![](/exercises/ex1/images/01_12_05_CreateWarrantyRecords.png)
 
-4. Create some warranty records
-  Now we have already implemented the get collection end point. We can already execute it. However, there is no data created yet. So let us create some data in warany table. Note that we dont have to expose any interface of that - we can just create the entries manually.
-  - In the logic editor drag and drop the create record as below and click on the Create Record
-  <br>![](/exercises/ex1/images/01_12_08_CreateWarrantyTableEntry.png)
+  - Success message should look like this:
 
-  - Click on the Custom Object
-  <br>![](/exercises/ex1/images/01_12_09_CreateWarrantyTablePopup.png)
+  <br>![](/exercises/ex1/images/01_12_06_CreateSuccess.png)
 
-  - Enter the value and Save
-  <br>![](/exercises/ex1/images/01_12_10_CreateWarrantyTableValue.png)
+  - Create two or more warranties
 
-  - Repeat the previous two steps to create more records
+5. Close the Data Browser modal and scroll page down and click GENERATE ENDPOINT button
 
-  5. First Deployment
-  Go back and click deployment.
-  <br>![](/exercises/ex1/images/01_12_11_GoToDeployment.png)
-  <br>![](/exercises/ex1/images/01_12_12_FirstDeploy.png)
+  <br>![](/exercises/ex1/images/01_12_07_GenerateEndpoint.png)
 
-6. Test the API in the brower (or postman)
-  Get the url from the corresponding data source and operation and test it either in a web-browser or postman.
-  <br>![](/exercises/ex1/images/01_12_13_TestURL.png)
+### Exercise 1.2.2 Test auto-generated Warranties API
 
-## Exercise 1.3 Consuming a C4C API in the AppGyver backend
-  In the next step we need to implement an API to create, read, update and delete warranty description. However, before that we need an API to read registered products. We will read the registered producs from C4C system. However, we cant use the C4C API directly in a AppGuver UI application directly due to CORS (Cross Origin Resource Sharing) issue. So, we need to wrap the C4C APi inside a AppGyver backend API. In this section we will do the same. 
+In the above section we have already created the database tables (Warranties) with some records and created Data Resource endpoint. Now we will test the auto-generated API for the first time.
 
-1. Nagigate to the DATA RESOURCES section and create a new data resource. Give it a name: 'RegisteredProducts'.
-  <br>![](/exercises/ex1/images/01_13_01_RegProductsDS.png)
+1. Test the API in the browser (or postman)
 
-2. Navigate to the GET COLLECTION option, since we want to get all the registered product information for a particular account, we would require the account information. So, let’s add a parameter to our API to receive account id from consumer and use the same while calling the above REST endpoint.
-  <br>![](/exercises/ex1/images/01_13_02_RegProductsQueryParam.png)
+  - Get the URL from the corresponding data source and operation and test it either in a web-browser or postman
+  - You can see a glimpse the Logic Editor at the bottom of the screen. We'll come back to it later
 
-3. In the Logic Editor, drag and drop the “HTTP JSON request” from the toolbar and connects the blocks as following:
-  <br>![](/exercises/ex1/images/01_13_03_RegProductsDSLogic.png)
+  <br>![](/exercises/ex1/images/01_12_09_CopyURL.png)
 
-4. Click on the `HTTP JSON Request` block and configure it as below:
-  - In the PROPERTIES section, in the URL, click on the ABC block and choose Formula option, click on the formula input field. It navigate to next screen where in the quotes provide the `https://my356925.crm.ondemand.com/sap/c4c/odata/v1/c4codataapi/RegisteredProductPartyInformationCollection`. 
-  - Save the configuration.     
-  <br>![](/exercises/ex1/images/01_13_04_RegProductC4CURL.png)
-  <br>![](/exercises/ex1/images/01_13_05_SelectFormula.png)
-  <br>![](/exercises/ex1/images/01_13_06_RegProductFormulaURL.png)
+  - If you paste the URL to browser it will return a JSON response like this:
 
-  - In the PROPERTIES section again, set Method as 'Get' 
-  - Set URL Query Parameteters: Click on 'X' box, next to it and navigate to formula editor (as for URL) and enter the value (inside double quote): 
-  `[{name: "$filter", value: "PartyID eq " + request.parameters.AccountID + " and RoleCode eq '60'"}, {name:"$expand", value:"RegisteredProduct"}, {name:"$select", value:"RegisteredProductID,PartyID,RegisteredProduct/SerialID"}]`.
-    
-  If we see closely then in this formula we are sending a “$filter” where PartyID is the AccountID passed as the query parameters. RoleCode is the fixed value for the role type 'Customer'. We are expanding to the RegisteredProduct node to get SerialID field.
-  <br>![](/exercises/ex1/images/01_13_06_SetMethodAndFilter.png)
+  <br>![](/exercises/ex1/images/01_12_10_Test.png)
 
-  - Headers: For this, in place of formula editor we will use 'List of values' option. Here we set the 'Accept' header to accept 'application/json' format. 
-  <br>![](/exercises/ex1/images/01_13_07_RegProductSetHeader.png)
-  <br>![](/exercises/ex1/images/01_13_08_SelectListOfValues.png)
-  <br>![](/exercises/ex1/images/01_13_09_HeaderEnterValues.png)
+## Exercise 1.3 Consuming a C4C API in the SAP AppGyver backend
 
-  - Authentication Credentials: Scroll down to the authorization credentials, click on the 'X' box and then 'Object with properties'. Enter the value: User Name: `Display` and password: `ReadMe`. Note that this user has limited access to just read registered products'  
-  <br>![](/exercises/ex1/images/01_13_09a_Authentication.png)
+  In the next step we need to implement an API to create, read, update and delete warranty description. However, before that we need an API to read registered products. We will read the registered producs from C4C system. However, we can't use the C4C API directly in a AppGyver UI application directly due to CORS (Cross Origin Resource Sharing) issue. So, we need to wrap the C4C APi inside a AppGyver backend API. In this section we will do the same.
 
-5. Double click the 'JS Create Response' block and configure it as below:
-  - In the Input, provide as name 'resultOfGetProducts' (as the name suggest, it is to refer the output of the previous block)
-  <br>![](/exercises/ex1/images/01_13_10_NameHttpRespOutput.png)
+1. Click BACK from left side menu and navigate to the EXTERNAL RESOURCES section to create a new OData Resource:
 
-  - Click on the 'ABC' in the resulting screen and choose the value as below
-  <br>![](/exercises/ex1/images/01_13_11_SelectHttpResp1.png)
-  <br>![](/exercises/ex1/images/01_13_12_SelectHttpResp2.png)
-  <br>![](/exercises/ex1/images/01_13_13_SelectHttpResp3.png)
+  <br>![](/exercises/ex1/images/01_12_11_Back.png)
 
-  - Copy the following Java Script code in the middle
-  ```javascript
-  let results = inputs.resultOfGetProducts.d.results;
-  let registeredProductIds = [];
-  for (let i = 0; i< results.length; i++){
-    let registeredProductID = results[i].RegisteredProductID + ":" 
-                  + results[i].RegisteredProduct.SerialID;
-    registeredProductIds.push( {"RegisteredProductID": registeredProductID} )
-  }
-  return [0, {
-    response: {
-      message: registeredProductIds
-    },
-  }];
-    
-  ``` 
-  - And confure the output (on the right hand side) as 'List' and List Item Type as 'Object':
-  <br>![](/exercises/ex1/images/01_13_14_SetJSOutput.png)
+  - Click ADD ODATARESOURCE button:
 
-  - Restart the application: 
-    - Press BACK in the left navigation
-    - Click DEPLOYMENTS and then RESTART button 
-    - Test - copy the URL from follwoing location and paste in the browser
-  <br>![](/exercises/ex1/images/01_13_15_TestURL.png)
+  <br>![](/exercises/ex1/images/01_13_01_ODataResource.png)
+
+2. Add following configuration to do discover available resources from C4C API
+  - Choose `Basic Authentication`
+  - Username `DISPLAY`
+  - Password `ReadMe`
+  - Base URL `https://my356925.crm.ondemand.com/sap/c4c/odata/v1/c4codataapi/`
+  - Click VERIFY URL button and wait for a while
+
+  <br>![](/exercises/ex1/images/01_13_02_ODataResource.png)
+
+  - You will see long list of available resources to make selection easier you can filter it
+  - Write 'RegisteredProductParty' to filter field (1) and toggle on 'RegisteredProductPartyInformationCollection' (2)
+
+  <br>![](/exercises/ex1/images/01_13_03_ODataResource.png)
+
+  - Expand 'RegisteredProduct'
+
+  <br>![](/exercises/ex1/images/01_13_04_ODataResource.png)
+
+  - You can test how the results look from TEST tab
+  - Click SAVE DATA RESOURCE after you've done the test
+
+  <br>![](/exercises/ex1/images/01_13_05_ODataResource.png)
+  <br>![](/exercises/ex1/images/01_13_06_ODataResource.png)
+
+3. Click GENERATE ENDPOINT to create Date Resource from OData API
+
+  <br>![](/exercises/ex1/images/01_13_07_GenerateEndpoint.png)
+
+4. Save (1) and change output schemas:
+
+  <br>![](/exercises/ex1/images/01_13_07b_Save.png)
+
+  - Navigate to the GET COLLECTION (1)
+  - Toggle off (2) to return specified properties
+  - Toggle every except 'RegisteredProductID' off (3)
+
+  <br>![](/exercises/ex1/images/01_13_07c_Output.png)
+
+5. Scroll down to Logic Editor and double-click List Records block
+
+  <br>![](/exercises/ex1/images/01_13_08_ConfigureListRecords.png)
+
+  - Click 'Authconfig' value bind button:
+
+  <br>![](/exercises/ex1/images/01_13_09_ConfigureListRecords.png)
+
+  - Choose 'Object with properties':
+
+  <br>![](/exercises/ex1/images/01_13_10_ConfigureListRecords.png)
+
+  - Choose 'Basic' authentication
+  - Click 'Username' value bind button
+
+  <br>![](/exercises/ex1/images/01_13_11_ConfigureListRecords.png)
+
+  - Choose 'Static text'
+  - Repeat same for 'Password'
+
+  <br>![](/exercises/ex1/images/01_13_12_ConfigureListRecords.png)
+
+  - Type `DISPLAY` to Username value
+  - Type `ReadMe` to Password value
+  - Click SAVE button to close the modal
+
+  <br>![](/exercises/ex1/images/01_13_13_ConfigureListRecords.png)
+
+6. In the Logic Editor, click 'Send Successful Response' block and change response to a Formula:
+  ```
+  MAP<Record>(outputs["List records"].records,  { RegisteredProductID: Record.RegisteredProductID + ":" + Record.RegisteredProduct.SerialID })
+  ```
+
+  - Click 'Response data' value bind button:
+
+  <br>![](/exercises/ex1/images/01_13_14_Response.png)
+
+  - Choose 'Formula'
+
+  <br>![](/exercises/ex1/images/01_13_15_Response.png)
+
+  - Click existing formula to edit it:
+
+  <br>![](/exercises/ex1/images/01_13_16_Response.png)
+
+  - Replace existing formula with a `MAP` formula from above in exercise:
+
+  <br>![](/exercises/ex1/images/01_13_17_Response.png)
+
+7. Save the project from top right corner and test new endpoint:
+  - Copy the URL from following location
+  - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/registeredproductpartyinformationcollection/`
+
+  <br>![](/exercises/ex1/images/01_13_19_TestURL.png)
+
+  - You should see a lot of registered products with above mapping data
+
+  <br>![](/exercises/ex1/images/01_13_20_Safari.png)
 
 ## Exercise 1.4 Implementing Warranty Subscription API
-  In the Exercise 1.2 we have already create a table to store warranties and implemented an API to read from the table. In this section we will create a table to store the warranty subscriptions and API for get and post operations.
 
-### Create Warrant Subscription Table
+In the Exercise 1.2 we have already create a table to store Warranties and implemented an API to read from the table. In this section we will create a table to store the Warranty Subscriptions and API for list and create operations.
 
-1.	To created backend tables navigate to Data Tables options, Click on ADD NEW. Provide a name to the table as 'Warranty'.
+### Exercise 1.4.1 Create Warrant Subscription Table
+
+1.	To created backend tables navigate to Data Tables options, Click on ADD NEW. Provide a name to the table as 'WarrantySubscriptions'.
 
   <br>![](/exercises/ex1/images/01_14_01_AddSubscriptionTable.png)
 
 2.	Configure Warranty Subscription table
 
-  Once the table is created, as we have seen earlier, an “id” field is automatically added, which will be the primary key to our database table. 
+  - Once the table is created, as we have seen earlier, an `id` field is automatically added, which will be the primary key to our database table
+  - Add additional table fields as below:
 
-  Add additional table fields as below:
+| Field name | Type | Description |
+| ---------- | ---- | ----------- |
+| IsActive | True/false | To check if the warranty is in active status or not |
+| Product | Text | To show the registered product description for selected account |
+| AccountID | Text | Account ID |
+| WarrantyEnd | Date text - ISO 8601 | Warranty expiry date information |
+| WarrantyID | Text | Warranty ID |
 
-  Following will be the fields we will be adding to our data base table. Scroll down and “Add New Property” to add fields as shown below. Example of IsActive is given below:
-  -	IsActive 	(type: True/false)	– To check if the warranty is in active status or not.
-  -	Product	 	(type: Text)	– To show the registered product description for selected account
-  -	AccountID (type: Text)		– Account information
-  -	WarrantyEnd (type: Date text - ISO 8601 )		– Warranty expiry date information
-  -	WarrantyID (type: Text)	– Warranty ID   
+  - Scroll down and “Add New Property” to add fields as shown below:
+
   <br>![](/exercises/ex1/images/01_14_02_AddField.png)
+
+  - Example of `IsActive` is given below:
+
   <br>![](/exercises/ex1/images/01_14_03_FieldConfig.png)
-  <br> Please cofigure other fields in the same way.
 
-### Create Warrant Subscription Data Source and API
-  1. Create Data Source
-  <br>![](/exercises/ex1/images/01_14_04_CreateDataSource.png)
+  - Please configure other fields in the same way
 
-  2. Configure query paramter to filter based on AccountID 
-  <br>![](/exercises/ex1/images/01_14_05_SetQueryParam.png)
-  <br>![](/exercises/ex1/images/01_14_06_SetQueryParam2.png)
+3. Scroll to the bottom of the page and click GENERATE ENDPOINT button
 
-  3. Configure table schema with following properties:
-    - IsActive (type: True/false) 
-    - Product (type: Text) 
-    - AccountID (type: Text) 
-    - WarrantyEnd (type: Date text - ISO 8601 ) 
-    - WarrantyID (type: Text) 
-  
-  4. Set Data Source implementation flow
-  <br>![](/exercises/ex1/images/01_14_07_SetDSFlow.png) 
+  <br>![](/exercises/ex1/images/01_14_04_GenerateEndpoint.png)
 
-  5. Configure List Subscriptions:
-  Double click on the 'List Subscriptions' block and configure as following:
-  - Set the table as `WarrantySubscription`
-  - Set filter condition
-  <br>![](/exercises/ex1/images/01_14_08_SetTableFilter.png) 
-  <br>![](/exercises/ex1/images/01_14_09_SetTableFilter2.png) 
-  <br>![](/exercises/ex1/images/01_14_10_SetTableFilter3.png) 
-  <br>![](/exercises/ex1/images/01_14_11_SetTableFilter4.png) 
-  <br>![](/exercises/ex1/images/01_14_12_SetTableFilter5.png) 
-  <br>![](/exercises/ex1/images/01_14_13_SetTableFilter6.png) 
-  <br>![](/exercises/ex1/images/01_14_14_SetTableFilter7.png) 
-  <br>![](/exercises/ex1/images/01_14_15_SetTableFilter8.png) 
+4. Save project from top right corner
 
-  - Configure 'List Warranties' block
-  <br>![](/exercises/ex1/images/01_14_16_SetWarrantyTable.png)
+5. Choose GET COLLECTION from left side. Now it's time to familiarise ourselves with the Logic Editor
 
-  - Set JS - Create Response block as below
-  <br>![](/exercises/ex1/images/01_14_17_SetJSBlock.png)
-  
-    - Configure two input variables
-      - `warranties` (List of Warraties / List of records)
-      - `subscriptions` (List of Subscriptions / List of records)
-    - Copy below JS snippet to JavaScript block:
-    ```javascript
-      let subscriptions = inputs.subscriptions;
-      let registeredProductIds = [];
-      for (let i = 0; i< subscriptions.length; i++){
-        let warranty = inputs.warranties.find(item => {
-            return item.id === subscriptions[i].WarrantyID;
-        });
-        subscriptions[i].WarrantyDescription = warranty?warranty.CoverageTerm:"";
-      }
+  <br>![](/exercises/ex1/images/01_14_05_LogicEditor.png)
 
-      return [0, {
-        response: {
-          message: subscriptions
-        },
-      }];
-    ```
-  - Set output as List and Item Type as Object as shown in the above diagram.
+  - Choose existing 'List Records' node (1) from the canvas and move it around freely
+  - Open 'Advanced' tab (2) from right side 'Properties' and rename node to 'List Subscriptions' (3)
 
-    With this we have implemented Get Collection to get the list of warranty subscriptions. Now let us implement Create Warranty Subscription to create some records before testing it.
+  <br>![](/exercises/ex1/images/01_14_06_RenameListRecords.png)
 
-### Implement Create (Post) Warranty Subscription.
+  - Drag new 'List Records' node under 'Data Tables' section to Logic Editor (1)
+  - Notice that left side menu also has 'List Records' under 'External Resources'! Use 'Data Tables' option instead
+  - Choose existing wires from 'List Subscriptions' to response nodes and delete them. Use Backspace key with Mac and Windows:
 
-1. Go to CREATE RECORD and configure the flow as below
-  <br>![](/exercises/ex1/images/01_14_18_CreateFlow.png)
+  <br>![](/exercises/ex1/images/01_14_07_DragNode.png)
 
-2. Set table field values from the request-payload
-  <br>![](/exercises/ex1/images/01_14_19_ExtractPayload.png)
-  <br>![](/exercises/ex1/images/01_14_20_ExtractPayLoad.png)
-  <br>![](/exercises/ex1/images/01_14_21_ExtractPayload.png)
+  - Connect 'List Subscriptions' top output wire to new 'List Records' input (1)
+  - Connect new 'List Records' output wire to existing response nodes inputs (2, 3)
+  - Rename new 'List Records' to 'List Warranties' and make sure it is connected to 'Warranties' table (4, 5)
 
-3. Configure all other fields and Save
-  <br>![](/exercises/ex1/images/01_14_22_ExtractPayload.png) 
+  <br>![](/exercises/ex1/images/01_14_08_RenameListWarranties.png)
 
-4. Set 'Send Successful Response" block
-  <br>![](/exercises/ex1/images/01_14_23_SetResponseBlock.png) 
+6. Join Coverage Terms from Warranties to Warranty Subscriptions by using a mapping function in response node
 
-4. Save the project 
+  - Click 'Send successful response' node and click 'Response data' value bind from Properties
 
-5. Restart the app and test
-   - As earlier go back to DEPLOYMENT and click RESTART
-   - To test we need to use some tools that can post the data. In this demo we will use [Postman](https://www.postman.com/downloads/).
-   - Run 'GET warranties' end point to get some valid warranty-ids. This will be used to create warranty-subscriptions.
-   - Run  'POST warrantysubscriptions' end point and provide following payload
-   ```json
-    {
-      "Product": "1001",
-      "IsActive": true,
-      "AccountID": "10002",
-      "WarrantyID": "<replace with an warranty-id in the previous step>",
-      "WarrantyEnd": "2021-11-16"
-    }
-   ```
-    <br>![](/exercises/ex1/images/01_14_24_TestPost.png)  
-  - Test 'GET warrantysubscription' end point by repacing POST with GET action in the URL bar. 
+  <br>![](/exercises/ex1/images/01_14_16_SetResponseFormula.png)
+
+  - Choose 'Formula'
+
+  <br>![](/exercises/ex1/images/01_14_17_ChooseFormula.png)
+
+  - Click existing formula to edit it:
+
+  <br>![](/exercises/ex1/images/01_14_18_ChangeFormula.png)
+
+  - This Formula goes through each Warranty Subscriptions and finds a matching Warranty from Warranties
+  - It then adds `CoverageTerm` from the Warranty to output
+  - Copy Formula to it's place:
+  ```
+  MAP<Subscription>(outputs["List Subscriptions"].records, MERGE([Subscription, { CoverageTerm: FIND<Warranty>(outputs["List Warranties"].records, Warranty.id == Subscription.WarrantyID).CoverageTerm }]))
+  ```
+
+  <br>![](/exercises/ex1/images/01_14_19_MapFormula.png)
+
+  - Click SAVE
+
+7. Add `CoverageTerm` to the output schema
+
+  - Navigate back to BASE CONFIGURATION (1) and scroll to the bottom of the page
+  - Add new field called `CoverageTerm` (2) and click plus icon (3)
+
+  <br>![](/exercises/ex1/images/01_14_20_SchemaChange.png)
+
+  With this we have implemented Get Collection to get the list of warranty subscriptions. Now let us implement Create Warranty Subscription to create some records before testing it.
+
+### Exercise 1.4.2 Create Warranty Subscriptions.
+
+1. Save the project
+
+2. To test go back to Data Resources and choose WarrantySubscriptions
+
+  - To test we need to use some tools that can post the data. In this workshop we will use [Postman](https://www.postman.com/downloads/)
+  - Run 'GET warranties' end point Exercise 1.2.2 to get some valid Warranty IDs. These will be used to create warranty-subscriptions
+  - Run  'POST warrantysubscriptions' end point and provide following payload
+
+  ```json
+  {
+    "Product": "1001",
+    "IsActive": true,
+    "AccountID": "1000034",
+    "WarrantyID": "<replace with an warranty-id in the previous step>",
+    "WarrantyEnd": "2021-11-16"
+  }
+  ```
+  <br>![](/exercises/ex1/images/01_14_24_TestPost.png)
+
+  - Test 'GET warrantysubscription' end point by replacing POST with GET action in the URL bar.
+
 ## Summary
 
-In this section we have created three backend service APIs that will be used to build the user interface in the next section. We have built APIs based on the local storage as well as created warapper API by consuming an external API (C4C Registered Product). 
+In this section we have created three backend service APIs that will be used to build the user interface in the next section. We have built APIs based on the local storage as well as created wrapper API by consuming an external API (C4C Registered Product).
 
-Continue to - [Exercise 2 - Exercise 2 Description](../ex2/README.md)
+Continue to - [Exercise 2 - Building the UI with the SAP AppGyver Composer](../ex2/README.md)
 
