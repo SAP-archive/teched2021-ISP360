@@ -409,7 +409,7 @@ Finally we can build and distribute our project. Preview Portal URL that we used
 
 ## Summary
 
-You've now implemented the frontend application and got the final url that will be used to mashup the application inside C4C.
+You've now implemented the frontend application and got the final url that will be used to mashup the application inside SAP Sales Cloud.
 
 The application url will look like this:
 `http://<unique name given>.wsapps.testgyver.com/?AccountID=1000000`. It accepts one query parameter called `AccountID`.

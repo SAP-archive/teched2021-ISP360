@@ -1,14 +1,14 @@
-# Exercise 3 - Emebedding the Web Application in C4C
+# Exercise 3 - Emebedding the Web Application in the SAP Sales Cloud
 
-In this exercise, we will will embed the webapp that was created in the previous step inside the Account Detail screen of C4C. This exercise consists of mainly two parts:
+In this exercise, we will will embed the webapp that was created in the previous step inside the Account Detail screen of SAP Sales Cloud. This exercise consists of mainly two parts:
 - Creating a mashup configuration that stores information about the webapp like url and parameters.
 - Emebedding the mashup object into the Agent Desk application.  
 
-## Exercise 3.1 Create a Mashup object in the C4C
+## Exercise 3.1 Create a Mashup object in the SAP Sales Cloud
 
 In this section we will create a mashup object using the webapp url that we have created in the excecise 2.  
 
-1. Login to the C4C and navigate to the Mashup Authoring screen
+1. Login to the SAP Sales Cloud and navigate to the Mashup Authoring screen
   - Create an HTML mashup as shown below:
  <br>![](/exercises/ex3/images/03_01_01_CreateMashup.png)
 

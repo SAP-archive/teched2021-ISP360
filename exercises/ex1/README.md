@@ -3,15 +3,15 @@
 In this exercise we will build backend services with the **SAP AppGyver**. We will build three services:
 
 - To store and read the warranty information
-- To read registered products data from C4C
-- To create and read warranty subscription information for given C4C account and registered product
+- To read registered products data from SAP Sales Cloud
+- To create and read warranty subscription information for given account and registered product
 
 After completion of this exercise, you would be familiar with
 
 - Create backend project
 - Creating database tables
 - Perform CRUD operations on them using REST API
-- Consuming external REST endpoints (like C4C OData API)
+- Consuming external REST endpoints (like Sales Cloud OData API)
 - Deploying and testing the service
 
 ## Exercise 1.1 Opening a backend project
@@ -92,9 +92,9 @@ In the above section we have already created the database tables (Warranties) wi
 
   <br>![](/exercises/ex1/images/01_12_10_Test.png)
 
-## Exercise 1.3 Consuming a C4C API in the SAP AppGyver backend
+## Exercise 1.3 Consuming a SAP Sales Cloud API in the SAP AppGyver backend
 
-  In the next step we need to implement an API to create, read, update and delete warranty description. However, before that we need an API to read registered products. We will read the registered producs from C4C system. However, we can't use the C4C API directly in a AppGyver UI application directly due to CORS (Cross Origin Resource Sharing) issue. So, we need to wrap the C4C APi inside a AppGyver backend API. In this section we will do the same.
+  In the next step we need to implement an API to create, read, update and delete warranty description. However, before that we need an API to read registered products. We will read the registered producs from the SAP Sales Cloud system. However, we can't use the SAP Sales Cloud API directly in a AppGyver UI application directly due to CORS (Cross Origin Resource Sharing) issue. So, we need to wrap the SAP Sales Cloud API inside a AppGyver backend API. In this section we will do the same.
 
 1. Click BACK from left side menu and navigate to the EXTERNAL RESOURCES section to create a new OData Resource:
 
@@ -104,7 +104,7 @@ In the above section we have already created the database tables (Warranties) wi
 
   <br>![](/exercises/ex1/images/01_13_01_ODataResource.png)
 
-2. Add following configuration to do discover available resources from C4C API
+2. Add following configuration to do discover available resources from SAP Sales Cloud API
   - Choose `Basic Authentication`
   - Username `DISPLAY`
   - Password `ReadMe`
@@ -320,7 +320,7 @@ In the Exercise 1.2 we have already create a table to store Warranties and imple
 
 ## Summary
 
-In this section we have created three backend service APIs that will be used to build the user interface in the next section. We have built APIs based on the local storage as well as created wrapper API by consuming an external API (C4C Registered Product).
+In this section we have created three backend service APIs that will be used to build the user interface in the next section. We have built APIs based on the local storage as well as created wrapper API by consuming an external API (SAP Sales Cloud Registered Product).
 
 Continue to - [Exercise 2 - Building the UI with the SAP AppGyver Composer](../ex2/README.md)
 
