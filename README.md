@@ -6,8 +6,12 @@ This repository contains the material for the SAP TechEd 2021 session called ISP
 
 ## Overview
 
-This session introduces attendees to Extension and Customization options in the SAP Sales and Service using SAP AppGyver platform.
-
+This session introduces attendees to Extension and Customization options in the SAP Sales and Service using SAP AppGyver platform. In this session you learn about:
+ - Developing REST services in SAP AppGyver platform. 
+ - Using SAP Sales Cloud OData services in SAP AppGyver platform.
+ - Developing user interfaces in SAP AppGyver platform.
+ - Embedding an AppGyver application in the SAP Sales Cloud.
+ 
 ## Requirements
 
 The requirements to follow the exercises in this repository are:
