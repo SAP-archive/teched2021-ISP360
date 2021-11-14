@@ -30,7 +30,7 @@ The requirements to follow the exercises in this repository are:
    - [Exercise 2.4  Implement Warranty Subscription Creation Page](exercises/ex2#exercise-24-implement-warranty-subscription-creation-page)
 - [Exercise 3 - Emebedding the Web Application in the SAP Sales Cloud ](exercises/ex3/)
     - [Exercise 3.1 Create a Mashup object in the SAP Sales Cloud](exercises/ex3#exercise-31-create-a-mashup-object-in-the-sap-sales-cloud)
-    - [Exercise 3.2 Configure Account screen to embed the mashup](exercises/ex2#exercise-32-configure-account-screen-to-embed-the-mashup)
+    - [Exercise 3.2 Configure Account screen to embed the mashup](exercises/ex3#exercise-32-configure-account-screen-to-embed-the-mashup)
 
 ## How to obtain support
 
