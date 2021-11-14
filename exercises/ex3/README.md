@@ -20,9 +20,9 @@ In this section we will create a mashup object using the webapp url that we have
  <br>![](/exercises/ex3/images/03_01_02_CreateMashup.png)
  <br>![](/exercises/ex3/images/03_01_03_CreateMashup.png)
 
-## Exercise 3.2 Configure Agent Desktop application
+## Exercise 3.2 Configure Account screen to embed the mashup
  
-In this section we will configure the Account Detail screen to use the above mashup object.
+In this section we will configure the Account Details screen to embed the above mashup object.
 
 1. Open Account Object Work List, search for the `Bank Tech` account and open it as below:
  <br>![](/exercises/ex3/images/03_02_01_OpenAccounts.png)
