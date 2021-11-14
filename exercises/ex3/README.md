@@ -1,8 +1,8 @@
 # Exercise 3 - Emebedding the Web Application in the SAP Sales Cloud
 
-In this exercise, we will will embed the webapp that was created in the previous step inside the Account Detail screen of SAP Sales Cloud. This exercise consists of mainly two parts:
+In this exercise, we will embed the webapp that was created in the previous step inside the Account Details screen of SAP Sales Cloud. This exercise consists of mainly two parts:
 - Creating a mashup configuration that stores information about the webapp like url and parameters.
-- Emebedding the mashup object into the Agent Desk application.  
+- Emebedding the mashup object into the Account Details screeen.  
 
 ## Exercise 3.1 Create a Mashup object in the SAP Sales Cloud
 
@@ -13,7 +13,7 @@ In this section we will create a mashup object using the webapp url that we have
  <br>![](/exercises/ex3/images/03_01_01_CreateMashup.png)
 
 2. Configure the mashup
-  - Select `With port binding` and Port binding : `Additional Account Information`
+  - Select `With port binding` and Port Binding to `Additional Account Information`
   - Give the mashup some name like `Warranties` 
   - Scroll down and configure url and parameters binding as in the next diagram
   - Test using `Preview` 
@@ -35,14 +35,14 @@ In this section we will configure the Account Details screen to embed the above 
  <br>![](/exercises/ex3/images/03_02_04_AddTab2.png)
 
 4. Add mashup as below:
-  - Select the Tab that you just added
-  - Select the `Pencil icon` in the default section as below 
-  - In the right hand side car, nagivate to the `View` using the back button 
+  - Select the Tab that you have just added
+  - Select the `Pencil icon` in the default section as below diagram
+  - In the right hand side car, nagivate to the `View` element using the back button 
   - Click Add Mashup
  <br>![](/exercises/ex3/images/03_02_05_AddMashup.png)
   
-  - In the opened popup, search for the mashup that you created earlier 
-  - Make sure to set full width, hide the header and set height to cover full area in the tab.
+  - In the mashup popup, search for the mashup that you have created earlier 
+  - Make sure to set the `full width`, `hide the header` and set `height` to cover full area in the tab.
  <br>![](/exercises/ex3/images/03_02_06_AddMashup2.png)
 
 5. Hide extra section that was added by default:
