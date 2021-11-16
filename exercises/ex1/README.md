@@ -195,7 +195,7 @@ In the above section we have already created the database tables (Warranties) wi
 
 7. Save the project from top right corner and test new endpoint:
   - Copy the URL from following location
-  - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/registeredproductpartyinformationcollection/`
+  - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/v1/registeredproductpartyinformationcollection/`
 
   <br>![](/exercises/ex1/images/01_13_19_TestURL.png)
 
