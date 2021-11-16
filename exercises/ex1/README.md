@@ -81,7 +81,9 @@ After completing these steps you will have a table to store warranties.
 
 In the above section we have already created the database tables (Warranties) with some records and created Data Resource endpoint. Now we will test the auto-generated API for the first time.
 
-1. Test the API in the browser (or postman)
+1. Save the project from top right corner
+
+2. Test the API in the browser (or postman)
 
   - Get the URL from the corresponding data source and operation and test it either in a web-browser or postman
   - You can see a glimpse the Logic Editor at the bottom of the screen. We'll come back to it later
