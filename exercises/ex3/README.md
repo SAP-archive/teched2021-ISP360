@@ -1,5 +1,7 @@
 # Exercise 3 - Emebedding the Web Application in the SAP Sales Cloud
 
+**Note that this exercise is showcased by the instructor only.**
+
 In this exercise, we will embed the webapp that was created in the previous step inside the Account Details screen of SAP Sales Cloud. This exercise consists of mainly two parts:
 - Creating a mashup configuration that stores information about the webapp like url and parameters.
 - Emebedding the mashup object into the Account Details screeen.  

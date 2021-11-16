@@ -381,7 +381,7 @@ Finally we can build and distribute our project. Preview Portal URL that we used
 
   <br>![](/exercises/ex2/images/02_26_04_Build.png)
 
-  - In the below step you will give the unique name that will make the final url
+  - In the below step you will give the unique name (like your `partcipant id`) that will make the final url
 
   <br>![](/exercises/ex2/images/02_26_05_Build.png)
 
@@ -412,6 +412,6 @@ Finally we can build and distribute our project. Preview Portal URL that we used
 You've now implemented the frontend application and got the final url that will be used to mashup the application inside SAP Sales Cloud.
 
 The application url will look like this:
-`http://<unique name given>.wsapps.testgyver.com/?AccountID=1000000`. It accepts one query parameter called `AccountID`.
+`http://<unique name given>.wsapps.testgyver.com/?AccountID=1000034`. It accepts one query parameter called `AccountID`.
 
 Continue to - [Exercise 3 - Excercise 3 ](../ex3/README.md)
