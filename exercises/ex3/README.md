@@ -11,15 +11,25 @@ In this exercise, we will embed the webapp that was created in the previous step
 In this section we will create a mashup object using the webapp url that we have created in the excecise 2.  
 
 1. Login to the SAP Sales Cloud and navigate to the Mashup Authoring screen
-  - Create an HTML mashup as shown below:
+  - In the left hand side navigation, expand `Administrator` 
+  - Select `Mashup Authoring`
+  - Once the mashup list screen opens, click `New` ans then `HTML mashup`
  <br>![](/exercises/ex3/images/03_01_01_CreateMashup.png)
 
 2. Configure the mashup
-  - Select `With port binding` and Port Binding to `Additional Account Information`
+  - Select `With port binding` and 
+  - Open Port Binding seletcion dialog and search and select `Additional Account Information`
   - Give the mashup some name like `Warranties` 
-  - Scroll down and configure url and parameters binding as in the next diagram
-  - Test using `Preview` 
+
  <br>![](/exercises/ex3/images/03_01_02_CreateMashup.png)
+
+3. Scroll down and configure url and parameters binding 
+  - Select Type as `URL`
+  - Give full (AppGyver) application url that you created in the execise-2 along with some parameter value (parameter value could be random)
+  - Click `Extract Parameter` button to create parameter (parameter can also be created/deleted manually)
+  - In the Parameter Binding select `AccountInternalId`
+  - Test using `Preview` but since no parameter was passed, no data will be shown. But the application frame should show up.
+  - Save & Activate
  <br>![](/exercises/ex3/images/03_01_03_CreateMashup.png)
 
 ## Exercise 3.2 Configure Account screen to embed the mashup
