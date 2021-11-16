@@ -305,7 +305,9 @@ In the Exercise 1.2 we have already create a table to store Warranties and imple
 
   - To test we need to use some tools that can post the data. In this workshop we will use [Postman](https://www.postman.com/downloads/)
   - Run 'GET warranties' end point Exercise 1.2.2 to get some valid Warranty IDs. These will be used to create warranty-subscriptions
+    - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/v1/warranties/`
   - Run  'POST warrantysubscriptions' end point and provide following payload
+    - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/v1/warrantysubscriptions/`
 
   ```json
   {
