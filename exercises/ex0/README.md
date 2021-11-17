@@ -39,7 +39,8 @@ The application comprises of three major parts:
 In this step you will familiarise yourself with the systems that will be used in the workshop.
 
 1.	AppGyver system and user.
-  - Claim a user with your own email address from the URL shared during the session
+  - Claim a user with your own email address from this URL: https://platform.testgyver.com/teched
+    Please note that, please note down you user and credentials. You will not be able to reclaim the user later on.
   - You'll also get an email with credentials
   - These credentials will be valid until 16th December 2021.  If you wish to continue experimenting after that you are encouraged to sign-up for Free SAP AppGyver account from https://www.appgyver.com
 
