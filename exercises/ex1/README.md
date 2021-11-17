@@ -83,7 +83,9 @@ After completing these steps you will have a table to store warranties.
 
 In the above section we have already created the database tables (Warranties) with some records and created Data Resource endpoint. Now we will test the auto-generated API for the first time.
 
-1. Test the API in the browser (or postman)
+1. Save the project from top right corner
+
+2. Test the API in the browser (or postman)
 
   - Get the URL from the corresponding data source and operation and test it either in a web-browser or postman
   - You can see a glimpse the Logic Editor at the bottom of the screen. We'll come back to it later
@@ -195,7 +197,7 @@ In the above section we have already created the database tables (Warranties) wi
 
 7. Save the project from top right corner and test new endpoint:
   - Copy the URL from following location
-  - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/registeredproductpartyinformationcollection/`
+  - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/v1/registeredproductpartyinformationcollection/`
 
   <br>![](/exercises/ex1/images/01_13_19_TestURL.png)
 
@@ -305,7 +307,9 @@ In the Exercise 1.2 we have already create a table to store Warranties and imple
 
   - To test we need to use some tools that can post the data. In this workshop we will use [Postman](https://www.postman.com/downloads/)
   - Run 'GET warranties' end point Exercise 1.2.2 to get some valid Warranty IDs. These will be used to create warranty-subscriptions
+    - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/v1/warranties/`
   - Run  'POST warrantysubscriptions' end point and provide following payload
+    - Ie. `https://<your unique hostname>.cm-backends.testgyver.com/api/v1/warrantysubscriptions/`
 
   ```json
   {
