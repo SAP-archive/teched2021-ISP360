@@ -14,6 +14,8 @@ After completion of this exercise, you would be familiar with
 - Consuming external REST endpoints (like Sales Cloud OData API)
 - Deploying and testing the service
 
+**Disclaimer:** SAP AppGyver Cloud Composer (a.k.a. Cloud Integrations) featured in this session is a pre-released product and still under development. SAP reserves the right to make changes and set a future release date or not release it at all.
+
 ## Exercise 1.1 Opening a backend project
 
 First you will need to go to **Cloud Integrations** builder from main **SAP AppGyver** view. We have pre-created and deployed an empty project for you so we'll get a running start for the workshop. You can create a new project yourself after the workshop steps.

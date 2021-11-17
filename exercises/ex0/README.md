@@ -2,7 +2,7 @@
 
 In this exercise, you will get the overview of the scenario that we are going to build in this workshop. You will also familiarise with systems and login process.
 
-## SAP Sales & Service Cloud Extension Overview
+## SAP Sales & Service Cloud Extensibility Overview
 
 Before starting the exercises, let us have a quick overview of the different extension options in the SAP Sales & Service Cloud. Please note that this is not an exhaustive list but just to give an idea about what part we are going to cover today. Below diagram lists two broad category of extensions:
 - **In-App extensions** are the extensions that are built on the technology stack of SAP Sales & Service Cloud. These extensions are primarily needed where transaction boundaries needs to be coupled with SAP Sales & Service objects. 
@@ -31,6 +31,8 @@ The application comprises of three major parts:
 - Backend service that persists the data and implements backend logic. It allows us to fetch data from **SAP Sales Cloud** and expose it via REST API. This is done in the **SAP AppGyver Cloud Integrations** builder
 - Frontend to create the user interface (web application) using the service interfaces created in the previous step. This is done using **SAP AppGyver Composer**
 - Integrating the web-app created in the previous step to **SAP Sales Cloud**. Note that in this workshop this part is showcased by the instructor only.
+
+**Disclaimer:** SAP AppGyver Cloud Composer (a.k.a. Cloud Integrations) featured in this session is a pre-released product and still under development. SAP reserves the right to make changes and set a future release date or not release it at all.
 
 ## Systems - User Selection & Login
 
