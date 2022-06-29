@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/teched2021-ISP360)](https://api.reuse.software/info/github.com/SAP-samples/teched2021-ISP360)
+
 # ISP360 - Look at Sales and Service Cloud In-App Extension and Customization Options
 
 ## Description
